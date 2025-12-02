@@ -4,6 +4,7 @@ using CCMovieDatabase.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CCMovieDatabase.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20251201183408_AddedShrekMovies")]
+    partial class AddedShrekMovies
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,45 +147,6 @@ namespace CCMovieDatabase.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CCMovieDatabase.Models.Category", b =>
-                {
-                    b.Property<int>("CategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CategoryId");
-
-                    b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryId = 1,
-                            Name = "Computer Accessories"
-                        },
-                        new
-                        {
-                            CategoryId = 2,
-                            Name = "Graphics Cards"
-                        },
-                        new
-                        {
-                            CategoryId = 3,
-                            Name = "Monitors"
-                        },
-                        new
-                        {
-                            CategoryId = 4,
-                            Name = "Hard Drives"
-                        });
-                });
-
             modelBuilder.Entity("CCMovieDatabase.Models.Character", b =>
                 {
                     b.Property<int>("CharacterId")
@@ -252,9 +216,6 @@ namespace CCMovieDatabase.Migrations
                     b.Property<DateOnly>("ReleaseDate")
                         .HasColumnType("date");
 
-                    b.Property<string>("ThumbnailURL")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -272,7 +233,6 @@ namespace CCMovieDatabase.Migrations
                             Description = "A mean lord exiles fairytale creatures to the swamp of a grumpy ogre, who must go on a quest and rescue a princess for the lord in order to get his land back.",
                             RatingId = 1,
                             ReleaseDate = new DateOnly(2001, 4, 26),
-                            ThumbnailURL = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTG_q0A0cypAsXxYlgs5J_554BrcnjeeKExlQE3ZaZUuPYv0fUd",
                             Title = "Shrek"
                         },
                         new
@@ -281,7 +241,6 @@ namespace CCMovieDatabase.Migrations
                             Description = "Shrek is back baby!",
                             RatingId = 1,
                             ReleaseDate = new DateOnly(2002, 4, 26),
-                            ThumbnailURL = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTPx7lW6h0G1O9-npEnVPL07fT74Tp6SFl0i47nxfypyVBcQFdS",
                             Title = "Shrek 2"
                         },
                         new
@@ -344,62 +303,6 @@ namespace CCMovieDatabase.Migrations
                     b.HasKey("PersonId");
 
                     b.ToTable("Persons");
-                });
-
-            modelBuilder.Entity("CCMovieDatabase.Models.Product", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ProductId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            ProductId = 1,
-                            CategoryId = 1,
-                            Description = "A simple mass produced keyboard",
-                            Name = "Dell Keyboard"
-                        },
-                        new
-                        {
-                            ProductId = 2,
-                            CategoryId = 2,
-                            Description = "A very expensive video card",
-                            Name = "RTX 5090"
-                        },
-                        new
-                        {
-                            ProductId = 3,
-                            CategoryId = 3,
-                            Description = "An enterprise widescreen monitor",
-                            Name = "Dell Widescreen Monitor"
-                        },
-                        new
-                        {
-                            ProductId = 4,
-                            CategoryId = 4,
-                            Description = "Western Digital Black Edition SSD",
-                            Name = "WD Black Edition SSD"
-                        });
                 });
 
             modelBuilder.Entity("CCMovieDatabase.Models.Rating", b =>
@@ -494,22 +397,6 @@ namespace CCMovieDatabase.Migrations
                         .IsRequired();
 
                     b.Navigation("Rating");
-                });
-
-            modelBuilder.Entity("CCMovieDatabase.Models.Product", b =>
-                {
-                    b.HasOne("CCMovieDatabase.Models.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("CCMovieDatabase.Models.Category", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("CCMovieDatabase.Models.Movie", b =>
