@@ -4,6 +4,7 @@ using CCMovieDatabase.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CCMovieDatabase.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20251201191148_AddedSeededMoviesForTop5")]
+    partial class AddedSeededMoviesForTop5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -213,9 +216,6 @@ namespace CCMovieDatabase.Migrations
                     b.Property<DateOnly>("ReleaseDate")
                         .HasColumnType("date");
 
-                    b.Property<string>("ThumbnailURL")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -233,7 +233,6 @@ namespace CCMovieDatabase.Migrations
                             Description = "A mean lord exiles fairytale creatures to the swamp of a grumpy ogre, who must go on a quest and rescue a princess for the lord in order to get his land back.",
                             RatingId = 1,
                             ReleaseDate = new DateOnly(2001, 4, 26),
-                            ThumbnailURL = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTG_q0A0cypAsXxYlgs5J_554BrcnjeeKExlQE3ZaZUuPYv0fUd",
                             Title = "Shrek"
                         },
                         new
@@ -242,16 +241,14 @@ namespace CCMovieDatabase.Migrations
                             Description = "Shrek is back baby!",
                             RatingId = 1,
                             ReleaseDate = new DateOnly(2002, 4, 26),
-                            ThumbnailURL = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTPx7lW6h0G1O9-npEnVPL07fT74Tp6SFl0i47nxfypyVBcQFdS",
                             Title = "Shrek 2"
                         },
                         new
                         {
                             Id = 3,
                             Description = "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
-                            RatingId = 4,
+                            RatingId = 1,
                             ReleaseDate = new DateOnly(2001, 1, 1),
-                            ThumbnailURL = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQcZT3sdwr1NiJytvJb95icJJKPWpWRNv35l_uuVYxjlzBJS-hb",
                             Title = "Harry Potter and the Sorcerer's Stone"
                         },
                         new
@@ -260,25 +257,22 @@ namespace CCMovieDatabase.Migrations
                             Description = "A cowboy doll is profoundly jealous when a new spaceman action figure supplants him as the top toy in a boy's bedroom.",
                             RatingId = 3,
                             ReleaseDate = new DateOnly(1995, 1, 1),
-                            ThumbnailURL = "https://m.media-amazon.com/images/M/MV5BZTA3OWVjOWItNjE1NS00NzZiLWE1MjgtZDZhMWI1ZTlkNzYwXkEyXkFqcGc@._V1_.jpg",
                             Title = "Toy Story"
                         },
                         new
                         {
                             Id = 5,
                             Description = "In the 1940s, a young boy named Ralphie Parker attempts to convince his parents, teacher, and Santa Claus that a Red Ryder Range 200 Shot BB gun really is the perfect Christmas gift.",
-                            RatingId = 4,
+                            RatingId = 1,
                             ReleaseDate = new DateOnly(1983, 1, 1),
-                            ThumbnailURL = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSUZk92ju8kisZKCc9m4lyySg9S5RSM6mhFnSWOpOb1_MlCsHsw",
                             Title = "A Christmas Story"
                         },
                         new
                         {
                             Id = 6,
                             Description = "Raised as an oversized elf, Buddy travels from the North Pole to New York City to meet his biological father, Walter Hobbs, who doesn't know he exists and is in desperate need of some Christmas spirit.",
-                            RatingId = 4,
+                            RatingId = 1,
                             ReleaseDate = new DateOnly(2003, 1, 1),
-                            ThumbnailURL = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT08ZFpbAwAL_jQFtQfMjut1_T6oNgxRCQiOPA6S1twJLXZq_Wi",
                             Title = "Elf"
                         },
                         new
@@ -287,7 +281,6 @@ namespace CCMovieDatabase.Migrations
                             Description = "When all but one child from the same class mysteriously vanish on the same night at exactly the same time, a community is left questioning who or what is behind their disappearance.",
                             RatingId = 2,
                             ReleaseDate = new DateOnly(2025, 1, 1),
-                            ThumbnailURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR84Bm2XnTfW7hukdkEdr5jezVGfoIt22h0-s7Dfk1aRavoPZmh",
                             Title = "Weapons"
                         });
                 });
@@ -343,11 +336,6 @@ namespace CCMovieDatabase.Migrations
                         {
                             RatingId = 3,
                             Name = "G"
-                        },
-                        new
-                        {
-                            RatingId = 4,
-                            Name = "PG"
                         });
                 });
 

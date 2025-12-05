@@ -10,25 +10,26 @@ using CCMovieDatabase.Models;
 
 namespace CCMovieDatabase.Controllers
 {
-    public class PorterController : Controller
+    public class PorterListController : Controller
     {
         private readonly MovieContext _context;
 
-        public PorterController(MovieContext context)
+        public PorterListController(MovieContext context)
         {
             _context = context;
         }
 
-        // GET: Porter
+        // GET: PorterList
         public async Task<IActionResult> Index()
         {
             var movieContext = _context.Movie
                 .Include(m => m.Rating)
-                .Where(m => m.Rating.Name == "G");
+                .Skip(2)
+                .Take(5);
             return View(await movieContext.ToListAsync());
         }
 
-        // GET: Porter/Details/5
+        // GET: PorterList/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,19 +48,19 @@ namespace CCMovieDatabase.Controllers
             return View(movie);
         }
 
-        // GET: Porter/Create
+        // GET: PorterList/Create
         public IActionResult Create()
         {
             ViewData["RatingId"] = new SelectList(_context.Ratings, "RatingId", "RatingId");
             return View();
         }
 
-        // POST: Porter/Create
+        // POST: PorterList/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,ReleaseDate,RatingId")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,ReleaseDate,RatingId,ThumbnailURL")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +72,7 @@ namespace CCMovieDatabase.Controllers
             return View(movie);
         }
 
-        // GET: Porter/Edit/5
+        // GET: PorterList/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,12 +89,12 @@ namespace CCMovieDatabase.Controllers
             return View(movie);
         }
 
-        // POST: Porter/Edit/5
+        // POST: PorterList/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,ReleaseDate,RatingId")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,ReleaseDate,RatingId,ThumbnailURL")] Movie movie)
         {
             if (id != movie.Id)
             {
@@ -124,7 +125,7 @@ namespace CCMovieDatabase.Controllers
             return View(movie);
         }
 
-        // GET: Porter/Delete/5
+        // GET: PorterList/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -143,7 +144,7 @@ namespace CCMovieDatabase.Controllers
             return View(movie);
         }
 
-        // POST: Porter/Delete/5
+        // POST: PorterList/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

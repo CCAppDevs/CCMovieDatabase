@@ -4,6 +4,7 @@ using CCMovieDatabase.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CCMovieDatabase.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20251202193443_AddedPGRating")]
+    partial class AddedPGRating
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -249,7 +252,7 @@ namespace CCMovieDatabase.Migrations
                         {
                             Id = 3,
                             Description = "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
-                            RatingId = 4,
+                            RatingId = 1,
                             ReleaseDate = new DateOnly(2001, 1, 1),
                             ThumbnailURL = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQcZT3sdwr1NiJytvJb95icJJKPWpWRNv35l_uuVYxjlzBJS-hb",
                             Title = "Harry Potter and the Sorcerer's Stone"
@@ -260,14 +263,14 @@ namespace CCMovieDatabase.Migrations
                             Description = "A cowboy doll is profoundly jealous when a new spaceman action figure supplants him as the top toy in a boy's bedroom.",
                             RatingId = 3,
                             ReleaseDate = new DateOnly(1995, 1, 1),
-                            ThumbnailURL = "https://m.media-amazon.com/images/M/MV5BZTA3OWVjOWItNjE1NS00NzZiLWE1MjgtZDZhMWI1ZTlkNzYwXkEyXkFqcGc@._V1_.jpg",
+                            ThumbnailURL = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRw1ynxwA6p8jGMs5TD1Q6BFgn9fafEk-XQ3lrYQGQo0q4Ggo3a",
                             Title = "Toy Story"
                         },
                         new
                         {
                             Id = 5,
                             Description = "In the 1940s, a young boy named Ralphie Parker attempts to convince his parents, teacher, and Santa Claus that a Red Ryder Range 200 Shot BB gun really is the perfect Christmas gift.",
-                            RatingId = 4,
+                            RatingId = 1,
                             ReleaseDate = new DateOnly(1983, 1, 1),
                             ThumbnailURL = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSUZk92ju8kisZKCc9m4lyySg9S5RSM6mhFnSWOpOb1_MlCsHsw",
                             Title = "A Christmas Story"
@@ -276,7 +279,7 @@ namespace CCMovieDatabase.Migrations
                         {
                             Id = 6,
                             Description = "Raised as an oversized elf, Buddy travels from the North Pole to New York City to meet his biological father, Walter Hobbs, who doesn't know he exists and is in desperate need of some Christmas spirit.",
-                            RatingId = 4,
+                            RatingId = 1,
                             ReleaseDate = new DateOnly(2003, 1, 1),
                             ThumbnailURL = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT08ZFpbAwAL_jQFtQfMjut1_T6oNgxRCQiOPA6S1twJLXZq_Wi",
                             Title = "Elf"
