@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CCMovieDatabase.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Favorite Movies</h1>
+
+<div class="row">
+    @foreach (var movie in Model)
+    {
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <img class="card-img-top" src="@movie.ThumbnailURL" alt="@movie.Title" />
+                <div class="card-body">
+                    <h5 class="card-title">@movie.Title</h5>
+                    <a asp-action="Details" asp-route-id="@movie.Id" class="btn btn-primary">
+                        Details
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThumbnailURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThumbnailURL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating.RatingId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
