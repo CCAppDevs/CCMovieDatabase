@@ -22,14 +22,25 @@ namespace CCMovieDatabase.Controllers
         // GET: ChristianList
         public async Task<IActionResult> Index()
         {
+
+            int[] myMovieIds = { 3, 4, 5, 6, 7 };
+
+            var myMovies = await _context.Movie
+                                         .Where(m => myMovieIds.Contains(m.Id))
+                                         .ToListAsync();
+
             var movieContext = _context.Movie.Include(m => m.Rating);
             return View(await movieContext.ToListAsync());
+            return View(myMovies);
         }
 
         // GET: ChristianList/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+
+            int[] myMovieIds = { 3, 4, 5, 6, 7 };
+
+            if (id == null || !myMovieIds.Contains(id.Value))
             {
                 return NotFound();
             }
