@@ -4,6 +4,7 @@ using CCMovieDatabase.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CCMovieDatabase.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20251205091324_MoreSeedData")]
+    partial class MoreSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -290,7 +293,6 @@ namespace CCMovieDatabase.Migrations
                             Description = "When Ash Williams is accidentally transported to 1300 A.D., he must retrieve the Necronomicon and battle an army of the dead in order to return home.",
                             RatingId = 2,
                             ReleaseDate = new DateOnly(1993, 2, 19),
-                            ThumbnailURL = "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.impawards.com%2F1993%2Fposters%2Farmy_of_darkness_ver3.jpg&f=1&nofb=1&ipt=0f5ba9f7dec46adcdb32748f094b542e4b5c8eff313c6811ef1bea9fde96af7d",
                             Title = "Army of Darkness"
                         },
                         new
@@ -299,7 +301,6 @@ namespace CCMovieDatabase.Migrations
                             Description = "An insurance salesman begins to suspect that his whole life is actually some sort of reality TV show.",
                             RatingId = 4,
                             ReleaseDate = new DateOnly(1998, 6, 5),
-                            ThumbnailURL = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpostertok.com%2Fwp-content%2Fuploads%2F2024%2F02%2F5337.webp&f=1&nofb=1&ipt=0e1573f1b1d07b5daa12a781e53f49b27c130790c4d2dcde54916cc0eff9f901",
                             Title = "The Truman Show"
                         },
                         new
@@ -308,7 +309,6 @@ namespace CCMovieDatabase.Migrations
                             Description = "A designer makes a grievous mistake when he rejects the friendship of a borderline cable guy.",
                             RatingId = 1,
                             ReleaseDate = new DateOnly(1996, 6, 14),
-                            ThumbnailURL = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc8.alamy.com%2Fcomp%2FBKG4ED%2Fthe-cable-guy-1996-poster-BKG4ED.jpg&f=1&nofb=1&ipt=04d76ad2b1e8ab66bd02da1ce264a9d679f0f2cad012d7c99c0ac192572af20b",
                             Title = "The Cable Guy"
                         },
                         new
@@ -317,7 +317,6 @@ namespace CCMovieDatabase.Migrations
                             Description = "After being bitten by a genetically-modified spider, a shy teenager gains spider-like abilities that he uses to fight injustice as a masked superhero and face a vengeful enemy.",
                             RatingId = 1,
                             ReleaseDate = new DateOnly(2002, 5, 3),
-                            ThumbnailURL = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Famc-theatres-res.cloudinary.com%2Fv1579117618%2Famc-cdn%2Fproduction%2F2%2Fmovies%2F3500%2F3499%2FPoster%2Fp_800x1200_Spider-Man_En_0802517.jpg&f=1&nofb=1&ipt=a5788d911cca9535bbb702afd5665df889150246b214e4f0394fc6f0a1e6f798",
                             Title = "Spider-Man"
                         },
                         new
@@ -326,7 +325,6 @@ namespace CCMovieDatabase.Migrations
                             Description = "Jack Skellington, king of Halloween Town, discovers Christmas Town, but his attempts to bring Christmas to his home causes confusion.",
                             RatingId = 4,
                             ReleaseDate = new DateOnly(1993, 10, 29),
-                            ThumbnailURL = "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.impawards.com%2F1993%2Fposters%2Fnightmare_before_christmas_ver1.jpg&f=1&nofb=1&ipt=a3fc758eba9bddd233e7d4e35b4511f5d2f2482e2d85d1589232c9d6a4c4efe6",
                             Title = "The Nightmare Before Christmas"
                         });
                 });
