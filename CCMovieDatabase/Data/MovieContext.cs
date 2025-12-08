@@ -36,10 +36,17 @@ namespace CCMovieDatabase.Data
             modelBuilder.Entity<Rating>().HasData(ratings);
 
             // right here we seed data
+            // im not a big movie guy so I ran out of movie ideas
+            // I also made the descriptions myself as I really like all these shows and movies
             var movies = new List<Movie>
             {
                 new Movie { Id = 1, Title = "Shrek", ReleaseDate = new DateOnly(2001, 04, 26), Description = "A mean lord exiles fairytale creatures to the swamp of a grumpy ogre, who must go on a quest and rescue a princess for the lord in order to get his land back.", RatingId = 1 },
                 new Movie { Id = 2, Title = "Shrek 2", ReleaseDate = new DateOnly(2002, 04, 26), Description = "Shrek is back baby!", RatingId = 1 },
+                new Movie { Id = 3, Title = "Sonic 3", ReleaseDate = new DateOnly(2024, 12, 20), Description = "The third sonic movie focusing on shadow and the sonic adventure 2 inspired story", RatingId = 1 },
+                new Movie { Id = 4, Title = "Star Wars Revenge of ths sith", ReleaseDate = new DateOnly(2005, 04, 26), Description = "The final movie in the prequel trilogy connecting it to the original trilogy", RatingId = 1 },
+                new Movie { Id = 5, Title = "Avatar the last airbender", ReleaseDate = new DateOnly(2005, 02, 21), Description = "about the avatar a supposed master of the 4 bending elements ", RatingId = 1 },
+                new Movie { Id = 6, Title = "Frieren: Beyond Journeys ENd", ReleaseDate = new DateOnly(2023, 09, 29), Description = "about an immortal elf that goes on an adventure to understand the meaning of the limited time poeple have", RatingId = 1 },
+                new Movie { Id = 7, Title = "The Mario Movie", ReleaseDate = new DateOnly(2023, 04, 05), Description = "The mario movie giving a diffrent story of how Mario came to the Mushroom kingdom", RatingId = 1 },
 
             };
 
